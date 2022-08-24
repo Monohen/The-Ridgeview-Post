@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/the-ridgeview-post/dist
+
 # testing
 /coverage
 
