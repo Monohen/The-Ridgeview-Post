@@ -42,7 +42,7 @@ function Posts({ post }: Props) {
       });
   };
   return (
-    <main>
+    <main className="pb-2">
       <article className="max-w-3xl mx-auto p-5">
         <img
           src={urlFor(post.mainImage).url()!}
