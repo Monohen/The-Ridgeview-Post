@@ -21,8 +21,8 @@ export default function Home({ posts }: Props) {
       </Head>
       <div className="p-10 w-full">
         <div className="w-full text-6xl sm:w-3/5">
-          <h2>
-            <span className="font-serif underline decoration-black">
+          <h2 className="font-serif drop-shadow-lg">
+            <span className="underline decoration-indigo-500">
               The Ridgeview Post
             </span>
             <br /> Latest Inside news from the Ridgeview Highschool and Redmond
@@ -31,11 +31,11 @@ export default function Home({ posts }: Props) {
           <div className="items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6">
             {posts.map((post) => (
               <Link key={post._id} href={`/post/${post.slug.current}`}>
-                <div className="border rounded-lg group cursor-pointer">
+                <div className="shadow border rounded-lg group cursor-pointer">
                   <img
                     src={urlFor(post.mainImage).url()!}
                     alt=""
-                    className="rounded-t-lg h-36 w-full object-cover group-hover:rounded-b-lg group-hover:scale-105 transition-transform duration-200 ease-in-out"
+                    className="rounded-t-lg h-36 w-full object-cover group-hover:rounded-b-lg group-hover:scale-105 transition-transform duration-200 ease-in-out ring-indigo-500 group-hover:ring"
                   />
                   <div className="rounded-lg bg-white text-base p-2 flex flex-row justify-between">
                     <div>
