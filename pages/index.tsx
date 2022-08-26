@@ -35,7 +35,7 @@ export default function Home({ posts }: Props) {
                   <img
                     src={urlFor(post.mainImage).url()!}
                     alt=""
-                    className="rounded-t-lg h-36 w-full object-cover group-hover:rounded-b-lg group-hover:scale-105 transition-transform duration-200 ease-in-out ring-indigo-500 group-hover:ring"
+                    className="rounded-t-lg h-36 w-full object-cover group-hover:rounded-b-lg group-hover:scale-105 transition-transform duration-200 ease-in-out ring-indigo-500 group-hover:ring bg-white"
                   />
                   <div className="rounded-lg bg-white text-base p-2 flex flex-row justify-between">
                     <div>
