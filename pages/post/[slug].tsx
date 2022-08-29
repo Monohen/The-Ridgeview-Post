@@ -101,84 +101,84 @@ function Posts({ post }: Props) {
         </div>
       </article>
       <hr className="max-w-lg my-5 mx-auto border border-indigo-500 shadow" />
-      {submitted ? (
-        <div className="flex flex-col py-5 px-2 md:rounded-lg my-10 bg-indigo-500 text-white w-full md:max-w-2xl md:mx-auto text-center shadow">
-          <h3 className="text-3xl font-bold">Your comment was submit</h3>
-          <p>
-            Your comment will appear once it is verified to be appropriate and
-            related.
-          </p>
-        </div>
-      ) : (
-        <form
-          className="flex flex-col p-5 max-w-2xl mx-auto mb-10"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <h3 className="text-lg">Comment</h3>
-          <hr className="py-3 mt-2" />
-
-          <label className="block mb-5">
-            <span className="text-gray-700">Name</span>
-            <input
-              {...register("name", { required: true })}
-              className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-              placeholder="John Appleseed"
-              type="text"
-            />
-          </label>
-
-          <label className="block mb-5">
-            <span className="text-gray-700">Email</span>
-            <input
-              {...register("email", { required: true })}
-              className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-              placeholder="youremail@yourdomain.com"
-              type="email"
-            />
-          </label>
-
-          <label className="block mb-5">
-            <span className="text-gray-700">Comment</span>
-            <textarea
-              {...register("comment", { required: true })}
-              className="shadow border rounded-lg py-2 px-3 form-textarea mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-              placeholder="Describe how this article made you feel. (Provide the article in which you are commenting on otherwise your comment won't be verified.)"
-              rows={8}
-            />
-          </label>
-
-          {/* errors */}
-          <div className="flex flex-col p-5">
-            {errors.name && (
-              <span className="text-red-500">Enter your name</span>
-            )}
-            {errors.email && (
-              <span className="text-red-500">Enter your email</span>
-            )}
-            {errors.comment && (
-              <span className="text-red-500">Enter a comment.</span>
-            )}
-          </div>
-          <input
-            type="submit"
-            className="shadow bg-indigo-500 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-lg cursor-pointer"
-          />
-        </form>
-      )}
-      {/* comment */}
-      <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto md:shadow md:rounded-lg bg-white">
-        <h3 className="text-lg pb-2">Comments</h3>
-        <hr className="pb-2" />
-
-        {post.comments.map((comment) => (
-          <div key={comment._id} className="pt-2">
+      <div className="p-5 max-w-2xl mx-auto mb-10">
+        {submitted ? (
+          <div className="flex flex-col py-5 px-2 md:rounded-lg my-10 bg-indigo-500 text-white w-full md:max-w-2xl md:mx-auto text-center shadow">
+            <h3 className="text-3xl font-bold">Your comment was submit</h3>
             <p>
-              <span className="text-indigo-500"> {comment.name}: </span>{" "}
-              {comment.comment}
+              Your comment will appear once it is verified to be appropriate and
+              related, wait at least 60 seconds after your comment has been
+              verified for it to appear.
             </p>
           </div>
-        ))}
+        ) : (
+          <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+            <h3 className="text-lg">Comment</h3>
+            <hr className="py-3 mt-2" />
+
+            <label className="block mb-5">
+              <span className="text-gray-700">Name</span>
+              <input
+                {...register("name", { required: true })}
+                className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
+                placeholder="Name"
+                type="text"
+              />
+            </label>
+
+            <label className="block mb-5">
+              <span className="text-gray-700">Email</span>
+              <input
+                {...register("email", { required: true })}
+                className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
+                placeholder="Email"
+                type="email"
+              />
+            </label>
+
+            <label className="block mb-5">
+              <span className="text-gray-700">Comment</span>
+              <textarea
+                {...register("comment", { required: true })}
+                className="shadow border rounded-lg py-2 px-3 form-textarea mt-1 block w-full ring-indigo-500 outline-none focus:ring"
+                placeholder="Note: Provide the article you are commenting on otherwise your comment won't be verified. This article was informative and resourceful. (Lorem Ipsum)"
+                rows={8}
+              />
+            </label>
+
+            {/* errors */}
+            <div className="flex flex-col p-5">
+              {errors.name && (
+                <span className="text-red-500">Enter your name</span>
+              )}
+              {errors.email && (
+                <span className="text-red-500">Enter your email</span>
+              )}
+              {errors.comment && (
+                <span className="text-red-500">Enter a comment.</span>
+              )}
+            </div>
+            <input
+              type="submit"
+              className="shadow bg-indigo-500 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-lg cursor-pointer"
+            />
+          </form>
+        )}
+        <div className="flex flex-col p-10 md:my-10 md:shadow md:rounded-lg w-full">
+          <h3 className="text-lg pb-2">Comments</h3>
+          <hr className="pb-2" />
+
+          {post.comments.map((comment) => (
+            <div key={comment._id} className="pt-2">
+              <p>
+                <span className="text-indigo-500"> {comment.name}: </span>{" "}
+                {comment.comment}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
+      {/* comment */}
     </main>
   );
 }

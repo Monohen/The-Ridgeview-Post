@@ -32,17 +32,17 @@ export default function Home({ posts }: Props) {
         <div className="w-auto h-full md:gap-3 py-4 md:py-6 grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
           {posts.map((post) => (
             <Link key={post._id} href={`/post/${post.slug.current}`}>
-              <div className="shadow border rounded-lg group cursor-pointer ring-indigo-500 hover:ring">
+              <div className="shadow border rounded-lg group cursor-pointer">
                 <img
                   src={urlFor(post.mainImage).url()!}
                   alt=""
-                  className="rounded-t-lg h-36 w-full object-cover group-hover:rounded-b-lg group-hover:scale-105 border-b border-b-black ring-indigo-500 group-hover:ring bg-white transition-transform duration-200 ease-in-out"
+                  className="rounded-t-lg group-hover:rounded-b-lg h-36 w-full object-cover group-hover:scale-105 ring-indigo-500 group-hover:ring bg-white transition-transform duration-200 ease-in-out"
                 />
                 <div className="rounded-lg bg-white text-base p-2 flex flex-row justify-between">
                   <div>
-                    <p className="text-lg py-1 font-bold">{post.title}</p>
-                    <p className="text-xs py-1">{post.description}</p>
-                    <p className="text-xs py-1 text-gray-600">
+                    <p className="text-lg font-bold">{post.title}</p>
+                    <p className="text-xs">{post.description}</p>
+                    <p className="text-xs text-gray-600">
                       Article by {post.author.name}
                     </p>
                   </div>
