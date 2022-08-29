@@ -17,8 +17,6 @@ interface Props {
 }
 
 function Posts({ post }: Props) {
-  console.log(post);
-
   const [submitted, setSubmitted] = useState(false);
 
   const {

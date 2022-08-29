@@ -2,10 +2,10 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <div className="w-full h-16 flex flex-col shadow justify-center items-center bg-white">
+    <div className="w-full h-20 flex flex-col shadow justify-center items-center bg-white">
       <div>
         <Link href={"/"}>
-          <h1 className="text-indigo-500 font-serif text-3xl drop-shadow cursor-pointer">
+          <h1 className="text-indigo-500 font-serif text-3xl drop-shadow cursor-pointer hover:underline decoration-indigo-500">
             The Ridgeview Post
           </h1>
         </Link>
