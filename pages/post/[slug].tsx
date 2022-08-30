@@ -45,13 +45,6 @@ function Posts({ post }: Props) {
   };
   return (
     <main className="pb-2">
-      <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6110297073296255"
-          crossOrigin="anonymous"
-        ></script>
-      </Head>
       <article className="max-w-3xl mx-auto p-5">
         <img
           src={urlFor(post.mainImage).url()!}
