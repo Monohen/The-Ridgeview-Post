@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 function Header() {
   const { data: session } = useSession();
@@ -20,7 +20,19 @@ function Header() {
         >
           Ravens Report Channel
         </a>
-        {session ? <div></div> : <div></div>}
+        {session ? (
+          <div className="float-right pl-3">
+            <a onClick={() => signOut()} className="cursor-pointer text-base">
+              Welcome {session.user.name}
+            </a>
+          </div>
+        ) : (
+          <div className="float-right pl-3">
+            <a onClick={() => signIn()} className="cursor-pointer text-base">
+              Login
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
