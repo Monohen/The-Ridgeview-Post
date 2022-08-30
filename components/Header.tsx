@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 function Header() {
+  const { data: session } = useSession();
+
   return (
     <div className="w-full h-20 flex flex-col shadow justify-center items-center bg-white">
       <div>
@@ -17,6 +20,7 @@ function Header() {
         >
           Ravens Report Channel
         </a>
+        {session ? <div></div> : <div></div>}
       </div>
     </div>
   );
