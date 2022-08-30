@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Setup Sanity cms
 
-Create a `env.local` in your root of your project folder and paste:
+Create a `.env.local` in your root of your project folder and paste:
 ```
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_PROJECT_ID=
@@ -46,6 +46,8 @@ sanity
 @sanity/client
 tailwindcss
 Typescript
+
+### Project does not work with node.js ^18, next-auth does not support node.js ^18 yet, once updated the project will too.
 
 ### Learn about Next.js (The framework used to make this project)
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
