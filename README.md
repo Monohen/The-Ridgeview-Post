@@ -12,11 +12,11 @@ SANITY_API_TOKEN=
 ```
 Note: You do not want to share anything in your `env.local` with anybody you don't trust.
 You can get your sanity project id from `/your-project/sanity.json` at line 7
-You can get your sanity api token from [sanity.io](https://sanity.io) by selecting your project, then go to the api tab and then add a new API token (select editor), you will get api key, copy that, you can see it again.
+You can get your sanity api token from [sanity.io](https://sanity.io/manage) by selecting your project, then go to the api tab and then add a new API token (select editor), you will get api key, copy that, you can see it again.
 
 ## Start Next.js
 To run from your computer, download the source, run `yarn` to update the packages and then `yarn dev` to run a local server.
-This project was made with and uses the Yarn Package Manager.
+This project was made with and uses the [`Yarn Package Manager`](https://yarnpkg.com).
 
 ```bash
 npm update
@@ -32,7 +32,7 @@ yarn dev
 
 You can access that server by going to [http://localhost:3000](http://localhost:3000)
 
-## Start Sanity CMS
+## Start [Sanity](https://www.sanity.io) Studio
 Start a local instance of Sanity Studio by going into the sanity directory `/the-ridgeview-post` inside of the project folder and running `sanity start`.
 You can the deploy it by running sanity deploy inside that same directory.
 
