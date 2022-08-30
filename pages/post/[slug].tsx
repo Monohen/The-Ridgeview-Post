@@ -4,6 +4,7 @@ import { Post } from "../../typings";
 import PortableText from "react-portable-text";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 interface IFormInput {
   _id: string;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 function Posts({ post }: Props) {
+  const { data: session } = useSession();
+
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -103,66 +106,66 @@ function Posts({ post }: Props) {
       <hr className="max-w-lg my-5 mx-auto border border-indigo-500 shadow" />
       <div className="p-5 max-w-2xl mx-auto mb-10">
         <div>
-          <h3 className="text-lg">Comment</h3>
-          <hr className="py-3 mt-2" />
-          {submitted ? (
-            <div className="flex flex-col py-5 px-2 md:rounded-lg my-10 bg-indigo-500 text-white w-full md:max-w-2xl md:mx-auto text-center shadow">
-              <h3 className="text-3xl font-bold">Your comment was submit</h3>
-              <p>
-                Your comment will appear once it is verified to be appropriate
-                and related, wait at least 60 seconds after your comment has
-                been verified for it to appear.
-              </p>
+          {session ? (
+            <div>
+              <h3 className="text-lg">Commenting as {session.user.name}</h3>
+              <hr className="py-3 mt-2" />
+              {submitted ? (
+                <div className="flex flex-col py-5 px-2 md:rounded-lg my-10 bg-indigo-500 text-white w-full md:max-w-2xl md:mx-auto text-center shadow">
+                  <h3 className="text-3xl font-bold">
+                    Your comment was submit
+                  </h3>
+                  <p>
+                    Your comment will appear once it is verified to be
+                    appropriate and related, wait at least 60 seconds after your
+                    comment has been verified for it to appear.
+                  </p>
+                </div>
+              ) : (
+                <form
+                  className="flex flex-col"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <input
+                    {...register("name", { required: true })}
+                    value={session!.user.name}
+                    type="hidden"
+                  />
+
+                  <input
+                    {...register("email", { required: true })}
+                    value={session!.user.email}
+                    type="hidden"
+                  />
+
+                  <label className="block mb-5">
+                    <span className="text-gray-700">
+                      Comment
+                      {errors.comment && (
+                        <span className="text-red-500"> *</span>
+                      )}
+                    </span>
+                    <textarea
+                      {...register("comment", { required: true })}
+                      className="shadow border rounded-lg py-2 px-3 form-textarea mt-1 block w-full ring-indigo-500 outline-none focus:ring"
+                      placeholder="Note: Provide the article you are commenting on otherwise your comment won't be verified. This article was informative and resourceful. (Lorem Ipsum)"
+                      rows={8}
+                    />
+                  </label>
+
+                  <input
+                    type="submit"
+                    className="shadow bg-indigo-500 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-lg cursor-pointer"
+                  />
+                </form>
+              )}
             </div>
           ) : (
-            <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-              <label className="block mb-5">
-                <span className="text-gray-700">Name</span>
-                <input
-                  {...register("name", { required: true })}
-                  className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-                  placeholder="Name"
-                  type="text"
-                />
-              </label>
-
-              <label className="block mb-5">
-                <span className="text-gray-700">Email</span>
-                <input
-                  {...register("email", { required: true })}
-                  className="shadow border rounded-lg py-2 px-3 form-input mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-                  placeholder="Email"
-                  type="email"
-                />
-              </label>
-
-              <label className="block mb-5">
-                <span className="text-gray-700">Comment</span>
-                <textarea
-                  {...register("comment", { required: true })}
-                  className="shadow border rounded-lg py-2 px-3 form-textarea mt-1 block w-full ring-indigo-500 outline-none focus:ring"
-                  placeholder="Note: Provide the article you are commenting on otherwise your comment won't be verified. This article was informative and resourceful. (Lorem Ipsum)"
-                  rows={8}
-                />
-              </label>
-
-              {/* errors */}
-              <div className="flex flex-col p-5">
-                {errors.name && (
-                  <span className="text-red-500">Enter your name</span>
-                )}
-                {errors.email && (
-                  <span className="text-red-500">Enter your email</span>
-                )}
-                {errors.comment && (
-                  <span className="text-red-500">Enter a comment.</span>
-                )}
-              </div>
-              <input
-                type="submit"
-                className="shadow bg-indigo-500 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-lg cursor-pointer"
-              />
-            </form>
+            <h3>
+              <a onClick={() => signIn()} className="cursor-pointer">
+                Login to comment
+              </a>
+            </h3>
           )}
         </div>
         <div className="flex flex-col p-10 md:my-10 md:shadow md:rounded-lg w-full">
