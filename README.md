@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Setup Sanity cms
 
-Create a `env.local` in your root of your project folder and paste:
+Create a `.env.local` in your root of your project folder and paste:
 ```
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_PROJECT_ID=
