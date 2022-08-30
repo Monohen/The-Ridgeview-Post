@@ -29,7 +29,7 @@ function Header() {
         ) : (
           <div className="float-right pl-3">
             <a onClick={() => signIn()} className="cursor-pointer text-base">
-              Login
+              Sign In
             </a>
           </div>
         )}
