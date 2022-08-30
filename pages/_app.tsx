@@ -13,6 +13,11 @@ export default function MyApp({
         <Header></Header>
         <Component {...pageProps} />
       </SessionProvider>
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6110297073296255"
+        crossOrigin="anonymous"
+      ></script>
     </div>
   );
 }
