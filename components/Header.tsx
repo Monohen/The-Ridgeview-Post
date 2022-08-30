@@ -1,5 +1,4 @@
 import Link from "next/link";
-import LoginBtn from "./login-btn";
 
 function Header() {
   return (
@@ -18,7 +17,6 @@ function Header() {
         >
           Ravens Report Channel
         </a>
-        <LoginBtn></LoginBtn>
       </div>
     </div>
   );
