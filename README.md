@@ -16,6 +16,7 @@ You can get your sanity api token from [sanity.io](https://sanity.io) by selecti
 
 ## Start Next.js
 To run from your computer, download the source, run `yarn` to update the packages and then `yarn dev` to run a local server.
+This project was made with and uses the Yarn Package Manager.
 
 ```bash
 npm update
@@ -37,6 +38,14 @@ You can the deploy it by running sanity deploy inside that same directory.
 
 ## Edit the source
 Start by editing `/pages/index.tsx`, change the look and feel of the website however you wish, edit each page at once by editing `/pages/post/[slug].tsx` or change the header in the `/components` folder, maybe create your own.
+
+## Current packages
+react-hook-form
+react-portable-text
+sanity
+@sanity/client
+tailwindcss
+Typescript
 
 ### Learn about Next.js (The framework used to make this project)
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
