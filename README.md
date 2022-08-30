@@ -47,6 +47,8 @@ sanity
 tailwindcss
 Typescript
 
+### Project does not work with node.js ^18, next-auth does not support node.js ^18 yet, once updated the project will too.
+
 ### Learn about Next.js (The framework used to make this project)
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
