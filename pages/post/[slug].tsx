@@ -45,6 +45,11 @@ function Posts({ post }: Props) {
   };
   return (
     <main className="pb-2">
+      <Head>
+        <title>{post.title} - The Ridgeview Post</title>
+        <meta name="description" content="Articles from The Ridgeview Post" />
+        <link rel="icon" href="../../public/favicon.ico" />
+      </Head>
       <article className="max-w-3xl mx-auto p-5">
         <img
           src={urlFor(post.mainImage).url()!}
