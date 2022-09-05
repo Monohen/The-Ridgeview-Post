@@ -11,10 +11,15 @@ export default function MyApp({
   return (
     <div className="bg-neutral-50 min-h-screen">
       <Script
+        id="Adsense-id"
+        data-ad-client="ca-pub-6110297073296255"
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6110297073296255"
-        crossOrigin="anonymous"
-      ></Script>
+        strategy="afterInteractive"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
 
       <SessionProvider session={session}>
         <Header></Header>
